@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using WhatWhere;
 using WhatWhere.Components.CSVReader;
 using WhatWhere.Components.DataProviders;
 using WhatWhere.Components.XmlReader;
+using WhatWhere.Data;
 using WhatWhere.Data.Entities;
 using WhatWhere.Data.Repositories;
 using WhatWhere.Services;
@@ -22,8 +24,8 @@ services.AddSingleton<IFoodProductProvider, FoodProductProvider>();
 services.AddSingleton<ICsvReader, CsvReader>();
 services.AddSingleton<IXmlCreator, XmlCreator>();
 services.AddSingleton<IDataProvider, DataProvider>();
-
-
+services.AddDbContext<WhatWhereDbContext>(options => options
+.UseSqlServer("Data Source=DESKTOP-7S5NEGF\\SQLEXPRESS;Initial Catalog=WhatWhereServer;Integrated Security=True;Trust Server Certificate=True"));
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetRequiredService<IApp>()!;
 app.Run();

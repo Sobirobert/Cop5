@@ -13,7 +13,7 @@ public class XmlCreator : IXmlCreator
 
     public void CreateXml()
     {
-        var carsRecords = _csvReader.ProcessCars(@"D:\Programowanie2\Cop 1\Cop-1-\WhatWhere\WhatWhere\Resources\Files\fuel.csv");
+        var carsRecords = _csvReader.ProcessCars(@"D:\repos3\Cop5\WhatWhere1\WhatWhere1\Resources\Files\fuel.csv");
 
         var document = new XDocument();
         var cars = new XElement("Cars", carsRecords
@@ -29,8 +29,8 @@ public class XmlCreator : IXmlCreator
 
     public void CreateXmlJoined()
     {
-        var carsRecords = _csvReader.ProcessCars(@"D:\Programowanie2\Cop 1\Cop-1-\WhatWhere\WhatWhere\Resources\Files\fuel.csv");
-        var manufacturersRecords = _csvReader.ProcessManufacturesrs(@"D:\Programowanie2\Cop 1\Cop-1-\WhatWhere\WhatWhere\Resources\Files\manufacturers.csv");
+        var carsRecords = _csvReader.ProcessCars(@"D:\repos3\Cop5\WhatWhere1\WhatWhere1\Resources\Files\fuel.csv");
+        var manufacturersRecords = _csvReader.ProcessManufacturesrs(@"D:\repos3\Cop5\WhatWhere1\WhatWhere1\Resources\Files\manufacturers.csv");
 
         var groupsJoined = manufacturersRecords.GroupJoin(
             carsRecords,

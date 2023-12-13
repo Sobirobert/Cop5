@@ -1,17 +1,22 @@
 ﻿namespace WhatWhere.Data;
 
 using Microsoft.EntityFrameworkCore;
+using WhatWhere.Components.CSVReader.Models;
 using WhatWhere.Data.Entities;
 
 public class WhatWhereDbContext : DbContext
 {
-    public DbSet<AGD> AGDs => Set<AGD>();
-    public DbSet<FoodProduct> FoodProducts => Set<FoodProduct>();
-    public DbSet<KitchenAccessory> KitchenAccessories => Set<KitchenAccessory>();
+    public WhatWhereDbContext(DbContextOptions<WhatWhereDbContext> options)
+        : base(options)
+    {
+
+    }
+
+    public DbSet<Car> Cars { get; set; }
+    public DbSet<AGD> AGDs { get; set; }
+    public DbSet<FoodProduct> FoodProducts { get; set; }
+    public DbSet<KitchenAccessory> KitchenAccessories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseInMemoryDatabase("StorageAppDb");
-    }
+        => optionsBuilder.LogTo(Console.WriteLine);
 }
