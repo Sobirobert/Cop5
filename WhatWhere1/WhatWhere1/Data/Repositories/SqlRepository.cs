@@ -24,7 +24,7 @@ public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
         _dbSet.Add(item);
         ItemAdded?.Invoke(this, item);
-        _dbContext.SaveChanges();
+        Save(); 
     }
 
     public IEnumerable<T> GetAll()
@@ -37,7 +37,7 @@ public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
     public void Remove(T item)
     {
         _dbSet.Remove(item);
-        _dbContext.SaveChanges();
+        Save();
         ItemRemoved?.Invoke(this, item);
     }
 

@@ -5,17 +5,17 @@ namespace WhatWhere.Services;
 
 public class UserCommunication : IUserCommunication
 {
-    private readonly IRepository<AGD> _agdRepositoryToJSON;
-    private readonly IRepository<FoodProduct> _foodProductRepositoryToJSON;
-    private readonly IRepository<KitchenAccessory> _kitchenAccessoryRepositoryToJSON;
+    private readonly IRepository<AGD> _agdRepository;
+    private readonly IRepository<FoodProduct> _foodProductRepository;
+    private readonly IRepository<KitchenAccessory> _kitchenAccessoryRepository;
     private readonly IAdditionalOption _additionalOption;
 
-    public UserCommunication(IRepository<AGD> agdRepositoryToJSON, IRepository<FoodProduct> groceriesRepositoryToJSON, IRepository<KitchenAccessory> KitchenAccessoriesRepositoryToJSON,
+    public UserCommunication(IRepository<AGD> agdRepository, IRepository<FoodProduct> groceriesRepository, IRepository<KitchenAccessory> KitchenAccessoriesRepository,
         IAdditionalOption additionalOption)
     {
-        _agdRepositoryToJSON = agdRepositoryToJSON;
-        _foodProductRepositoryToJSON = groceriesRepositoryToJSON;
-        _kitchenAccessoryRepositoryToJSON = KitchenAccessoriesRepositoryToJSON;
+        _agdRepository = agdRepository;
+        _foodProductRepository = groceriesRepository;
+        _kitchenAccessoryRepository = KitchenAccessoriesRepository;
         _additionalOption = additionalOption;
     }
 
@@ -39,42 +39,42 @@ public class UserCommunication : IUserCommunication
                     var inPut = GetInputFromUserAndReturnInt("\n Which Entities do you want to add ? \n Press: \n 1 - AGD,\n 2 - Groceries,\n 3 - KitchenAccessories.\n");
                     if (inPut == 1)
                     {
-                        AddNewAGD(_agdRepositoryToJSON);
+                        AddNewAGD(_agdRepository);
                         Console.WriteLine($"Success");
                     }
                     else if (inPut == 2)
                     {
-                        AddNewGroceries(_foodProductRepositoryToJSON);
+                        AddNewGroceries(_foodProductRepository);
                         Console.WriteLine("Success");
                     }
                     else if (inPut == 3)
                     {
-                        AddNewKitchenAccessories(_kitchenAccessoryRepositoryToJSON);
+                        AddNewKitchenAccessories(_kitchenAccessoryRepository);
                         Console.WriteLine("Success");
                     }
                     break;
 
                 case "2":
-                    WriteAllToConsole(_agdRepositoryToJSON);
-                    WriteAllToConsole(_foodProductRepositoryToJSON);
-                    WriteAllToConsole(_kitchenAccessoryRepositoryToJSON);
+                    WriteAllToConsole(_agdRepository);
+                    WriteAllToConsole(_foodProductRepository);
+                    WriteAllToConsole(_kitchenAccessoryRepository);
                     break;
 
                 case "3":
                     var userInPut2 = GetInputFromUserAndReturnInt("\nWhich Entities do you want to find by Id ? \n Press 1 - AGD, 2 - Groceries, 3 - KitchenAccessories.\n");
                     if (userInPut2 == 1)
                     {
-                        FindProductById(_agdRepositoryToJSON);
+                        FindProductById(_agdRepository);
                         Console.WriteLine($"Success");
                     }
                     else if (userInPut2 == 2)
                     {
-                        FindProductById(_foodProductRepositoryToJSON);
+                        FindProductById(_foodProductRepository);
                         Console.WriteLine("Success");
                     }
                     else if (userInPut2 == 3)
                     {
-                        FindProductById(_kitchenAccessoryRepositoryToJSON);
+                        FindProductById(_kitchenAccessoryRepository);
                         Console.WriteLine("Success");
                     }
                     break;
@@ -83,17 +83,17 @@ public class UserCommunication : IUserCommunication
                     var userInPut3 = GetInputFromUserAndReturnInt("\nWhich Entities do you want remove by Id ? \n Press 1 - AGD, 2 - Groceries, 3 - KitchenAccessories.\n");
                     if (userInPut3 == 1)
                     {
-                        RemoveEntity(_agdRepositoryToJSON);
+                        RemoveEntity(_agdRepository);
                         Console.WriteLine($"Success");
                     }
                     else if (userInPut3 == 2)
                     {
-                        RemoveEntity(_foodProductRepositoryToJSON);
+                        RemoveEntity(_foodProductRepository);
                         Console.WriteLine("Success");
                     }
                     else if (userInPut3 == 3)
                     {
-                        RemoveEntity(_kitchenAccessoryRepositoryToJSON);
+                        RemoveEntity(_kitchenAccessoryRepository);
                         Console.WriteLine("Success");
                     }
                     break;
@@ -104,7 +104,7 @@ public class UserCommunication : IUserCommunication
 
                 case "x":
                 case "X":
-                    CloseAppSaveChanges(_agdRepositoryToJSON, _foodProductRepositoryToJSON, _kitchenAccessoryRepositoryToJSON);
+                    CloseAppSaveChanges(_agdRepository, _foodProductRepository, _kitchenAccessoryRepository);
                     return;
 
                 default:
@@ -215,14 +215,13 @@ public class UserCommunication : IUserCommunication
         var count = Console.ReadLine();
         int countInt = AddStringConversionToInt(count);
 
-        var newObjcet = new KitchenAccessory
+        kitchenAccessoryRepositoryToJSON.Add(new KitchenAccessory()
         {
             Name = name,
             Location = location,
             Count = countInt,
             DateChange = DateTime.Now
-        };
-        kitchenAccessoryRepositoryToJSON.Add(newObjcet);
+        });
         Console.WriteLine($"KitchenAccessories Added: {name}");
     }
 

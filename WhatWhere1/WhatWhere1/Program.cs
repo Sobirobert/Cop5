@@ -8,6 +8,7 @@ using WhatWhere.Data;
 using WhatWhere.Data.Entities;
 using WhatWhere.Data.Repositories;
 using WhatWhere.Services;
+using WhatWhere1.Components.SqlReader;
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();
@@ -24,6 +25,9 @@ services.AddSingleton<IFoodProductProvider, FoodProductProvider>();
 services.AddSingleton<ICsvReader, CsvReader>();
 services.AddSingleton<IXmlCreator, XmlCreator>();
 services.AddSingleton<IDataProvider, DataProvider>();
+services.AddSingleton<ISqlReader, SqlReader>();
+
+
 services.AddDbContext<WhatWhereDbContext>(options => options
 .UseSqlServer("Data Source=DESKTOP-7S5NEGF\\SQLEXPRESS;Initial Catalog=WhatWhereServer;Integrated Security=True;Trust Server Certificate=True"));
 var serviceProvider = services.BuildServiceProvider();

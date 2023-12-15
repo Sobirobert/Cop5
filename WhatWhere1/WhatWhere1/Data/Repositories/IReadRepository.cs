@@ -8,8 +8,8 @@ namespace WhatWhere.Data.Repositories
 
         T? GetById(int id);
 
-        public IEnumerable<T> Read();
+        IEnumerable<T> Read();
 
-        public int GetListCount();
+        int GetListCount();
     }
 }
