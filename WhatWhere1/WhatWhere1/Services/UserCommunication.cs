@@ -104,7 +104,7 @@ public class UserCommunication : IUserCommunication
 
                 case "x":
                 case "X":
-                    CloseAppSaveChanges(_agdRepository, _foodProductRepository, _kitchenAccessoryRepository);
+                    // CloseAppSaveChanges(_agdRepository, _foodProductRepository, _kitchenAccessoryRepository);
                     return;
 
                 default:
@@ -114,29 +114,29 @@ public class UserCommunication : IUserCommunication
         }
     }
 
-    private bool CloseAppSaveChanges(IRepository<AGD> agdRepository, IRepository<FoodProduct> foodProductRepository, IRepository<KitchenAccessory> kitchenAccessoryRepository)
-    {
-        while (true)
-        {
-            var choice = GetInputFromUserAndReturnString("Do you want to save changes?\nPress Y if YES\t\tPress N if NO").ToUpper();
-            if (choice == "Y")
-            {
-                agdRepository.Save();
-                foodProductRepository.Save();
-                kitchenAccessoryRepository.Save();
-                Console.WriteLine("Changes saved.");
-                return true;
-            }
-            else if (choice == "N")
-            {
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Please choose Yes or No:");
-            }
-        }
-    }
+    //private bool CloseAppSaveChanges(IRepository<AGD> agdRepository, IRepository<FoodProduct> foodProductRepository, IRepository<KitchenAccessory> kitchenAccessoryRepository)
+    //{
+    //    while (true)
+    //    {
+    //        var choice = GetInputFromUserAndReturnString("Do you want to save changes?\nPress Y if YES\t\tPress N if NO").ToUpper();
+    //        if (choice == "Y")
+    //        {
+    //            agdRepository.Save();
+    //            foodProductRepository.Save();
+    //            kitchenAccessoryRepository.Save();
+    //            Console.WriteLine("Changes saved.");
+    //            return true;
+    //        }
+    //        else if (choice == "N")
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Please choose Yes or No:");
+    //        }
+    //    }
+    //}
 
     private void RemoveEntity<T>(IRepository<T> repository) where T : class, IEntity
     {
@@ -192,14 +192,13 @@ public class UserCommunication : IUserCommunication
         var count = Console.ReadLine();
         int countInt = AddStringConversionToInt(count);
 
-        var newObjcet = new AGD
+        agdRepositoryToJSON.Add(new AGD()
         {
             Name = name,
             Location = location,
             Count = countInt,
             DateChange = DateTime.Now
-        };
-        agdRepositoryToJSON.Add(newObjcet);
+        });
         Console.WriteLine($"AGD Added: {name}");
     }
 
@@ -237,14 +236,13 @@ public class UserCommunication : IUserCommunication
         var count = Console.ReadLine();
         int countInt = AddStringConversionToInt(count);
 
-        var newObjcet = new FoodProduct
+        foodProductRepositoryToJSON.Add(new FoodProduct()
         {
             Name = name,
             Location = location,
             Count = countInt,
             DateChange = DateTime.Now
-        };
-        foodProductRepositoryToJSON.Add(newObjcet);
+        });
         Console.WriteLine($"Groceries Added: {name}");
     }
 

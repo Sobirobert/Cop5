@@ -1,6 +1,8 @@
-﻿namespace WhatWhere.Components.CSVReader.Models;
+﻿using WhatWhere.Data.Entities;
 
-public class Car
+namespace WhatWhere.Components.CSVReader.Models;
+
+public class Car : EntityBase
 {
     public int Year { get; set; }
     public string Manufacturer { get; set; }

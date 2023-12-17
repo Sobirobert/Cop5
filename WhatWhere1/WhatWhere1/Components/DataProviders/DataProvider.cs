@@ -1,5 +1,5 @@
-﻿using WhatWhere.Components.CSVReader.Models;
-using WhatWhere.Components.CSVReader;
+﻿using WhatWhere.Components.CSVReader;
+using WhatWhere.Components.CSVReader.Models;
 
 namespace WhatWhere.Components.DataProviders;
 
@@ -20,9 +20,9 @@ public class DataProvider : IDataProvider
         GroupManufacturersByDisplacement(cars);
 
         GroupManufacturersByName(cars);
-               
+
         JoinManufacturersAndCars(cars, manufacturers);
-                
+
         JoinManufacturersAndCarsGroupByManufacturer(cars, manufacturers);
     }
 
@@ -48,7 +48,7 @@ public class DataProvider : IDataProvider
         var groupsJoined = manufacturers.GroupJoin(
             cars,
             m => new { Manufacturer = m.Name, m.Year },
-            c => new { c.Manufacturer, c.Year }            ,
+            c => new { c.Manufacturer, c.Year },
             (m, c) =>
                 new
                 {
@@ -111,7 +111,7 @@ public class DataProvider : IDataProvider
             Console.WriteLine($"{group.Name}\n" +
                 $"\tcombined max: {group.Max}\n" +
                 $"\tcombined min: {group.Min}\n" +
-                $"\tcombined avr: {group.Average}\n" );
+                $"\tcombined avr: {group.Average}\n");
         }
     }
 }

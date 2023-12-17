@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using WhatWhere.Data;
 using WhatWhere.Data.Entities;
 
-public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
+public class SqlRepository<T> : IRepository<T>
+    where T : class, IEntity, new()
 {
     private readonly DbSet<T> _dbSet;
     private readonly WhatWhereDbContext _dbContext;
@@ -13,6 +14,7 @@ public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
     public SqlRepository(WhatWhereDbContext dbContext)
     {
         _dbContext = dbContext;
+        _dbContext.Database.EnsureCreated();
         _dbSet = _dbContext.Set<T>();
     }
 
@@ -24,7 +26,7 @@ public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
         _dbSet.Add(item);
         ItemAdded?.Invoke(this, item);
-        Save(); 
+        Save();
     }
 
     public IEnumerable<T> GetAll()

@@ -2,12 +2,12 @@
 
 public class FoodProduct : EntityBase
 {
-    public FoodProduct(string? name, string? location, int count, DateTime DateChanges)
+    public FoodProduct(string? name, string? location, int count, DateTime dateChanges)
     {
         Name = name;
         Location = location;
         Count = count;
-        DateChange = DateChanges;
+        DateChange = dateChanges;
     }
 
     public FoodProduct()

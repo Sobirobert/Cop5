@@ -15,9 +15,9 @@ services.AddSingleton<IApp, App>();
 services.AddSingleton<IRepository<AGD>, SqlRepository<AGD>>();
 services.AddSingleton<IRepository<FoodProduct>, SqlRepository<FoodProduct>>();
 services.AddSingleton<IRepository<KitchenAccessory>, SqlRepository<KitchenAccessory>>();
-services.AddSingleton<IRepository<AGD>, RepositoryToFileJson<AGD>>();
-services.AddSingleton<IRepository<FoodProduct>, RepositoryToFileJson<FoodProduct>>();
-services.AddSingleton<IRepository<KitchenAccessory>, RepositoryToFileJson<KitchenAccessory>>();
+//services.AddSingleton<IRepository<AGD>, RepositoryToFileJson<AGD>>();
+//services.AddSingleton<IRepository<FoodProduct>, RepositoryToFileJson<FoodProduct>>();
+//services.AddSingleton<IRepository<KitchenAccessory>, RepositoryToFileJson<KitchenAccessory>>();
 services.AddSingleton<IUserCommunication, UserCommunication>();
 services.AddSingleton<IEventHandlerServices, EventHandlerServices>();
 services.AddSingleton<IAdditionalOption, AdditionalOption>();
@@ -27,9 +27,8 @@ services.AddSingleton<IXmlCreator, XmlCreator>();
 services.AddSingleton<IDataProvider, DataProvider>();
 services.AddSingleton<ISqlReader, SqlReader>();
 
-
 services.AddDbContext<WhatWhereDbContext>(options => options
-.UseSqlServer("Data Source=DESKTOP-7S5NEGF\\SQLEXPRESS;Initial Catalog=WhatWhereServer;Integrated Security=True;Trust Server Certificate=True"));
+.UseSqlServer("Data Source=DESKTOP-7S5NEGF\\SQLEXPRESS;Initial Catalog=WhatWhereServer;Integrated Security=True;Encrypt=False;Trust Server Certificate=True"));
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetRequiredService<IApp>()!;
 app.Run();

@@ -1,5 +1,4 @@
-﻿
-using WhatWhere.Services;
+﻿using WhatWhere.Services;
 using WhatWhere1.Components.SqlReader;
 
 namespace WhatWhere;
@@ -10,7 +9,7 @@ public class App : IApp
     private readonly IUserCommunication _userCommunication;
     private readonly ISqlReader _sqlReader;
 
-    public App( IEventHandlerServices eventHandlerService, IUserCommunication userCommunication, ISqlReader sqlReader)
+    public App(IEventHandlerServices eventHandlerService, IUserCommunication userCommunication, ISqlReader sqlReader)
     {
         _eventHandlerService = eventHandlerService;
         _userCommunication = userCommunication;
@@ -21,6 +20,6 @@ public class App : IApp
     {
         _eventHandlerService.SubscribeToEvents();
         _userCommunication.Menu();
-       // _sqlReader.InsertData();
+        _sqlReader.CarInfo();
     }
 }

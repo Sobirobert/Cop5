@@ -6,7 +6,6 @@ namespace WhatWhere1.Components.SqlReader;
 
 public class SqlReader : ISqlReader
 {
-
     private readonly ICsvReader _csvReader;
     private readonly WhatWhereDbContext _dbContext;
 
@@ -14,24 +13,29 @@ public class SqlReader : ISqlReader
     {
         _csvReader = csvReader;
         _dbContext = dbContext;
-       // _dbContext.Database.EnsureCreated();
+        _dbContext.Database.EnsureCreated();
     }
 
-    public void ChangeDataFromDb(string name)
+    public void CarInfo()
+    {
+        // InsertData();
+    }
+
+    private void ChangeDataFromDb(string name)
     {
         var cayman = this.ReadFirst($"{name}");
         cayman.Name = "Mój Samochód";
         _dbContext.SaveChanges();
     }
 
-    public void DeleteDataFromDb(string name)
+    private void DeleteDataFromDb(string name)
     {
         var cayman = this.ReadFirst($"{name}");
         _dbContext.Cars.Remove(cayman);                 //usuwanie danych
         _dbContext.SaveChanges();
     }
 
-    public void InsertData()
+    private void InsertData()
     {
         var cars = _csvReader.ProcessCars("D:\\repos3\\Cop5\\WhatWhere1\\WhatWhere1\\Resources\\Files\\fuel.csv");
 
@@ -52,7 +56,7 @@ public class SqlReader : ISqlReader
         }
     }
 
-    public void ReadAllCarsFromDb()
+    private void ReadAllCarsFromDb()
     {
         var carsFromDb = _dbContext.Cars.ToList();
 
@@ -62,12 +66,12 @@ public class SqlReader : ISqlReader
         }
     }
 
-    public Car? ReadFirst(string name)
+    private Car? ReadFirst(string name)
     {
         return _dbContext.Cars.FirstOrDefault(x => x.Name == name);
     }
 
-    public void ReadGroupedCarsFromDb()
+    private void ReadGroupedCarsFromDb()
     {
         var groups = _dbContext
            .Cars
