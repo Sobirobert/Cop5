@@ -25,7 +25,6 @@ services.AddSingleton<IFoodProductProvider, FoodProductProvider>();
 services.AddSingleton<ICsvReader, CsvReader>();
 services.AddSingleton<IXmlCreator, XmlCreator>();
 services.AddSingleton<IDataProvider, DataProvider>();
-services.AddSingleton<ISqlReader, SqlReader>();
 
 services.AddDbContext<WhatWhereDbContext>(options => options
 .UseSqlServer("Data Source=DESKTOP-7S5NEGF\\SQLEXPRESS;Initial Catalog=WhatWhereServer;Integrated Security=True;Encrypt=False;Trust Server Certificate=True"));
