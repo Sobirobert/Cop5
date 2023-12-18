@@ -11,7 +11,6 @@ public class WhatWhereDbContext : DbContext
     {
     }
 
-    public DbSet<Car> Cars { get; set; }
     public DbSet<AGD> AGDs { get; set; }
     public DbSet<FoodProduct> FoodProducts { get; set; }
     public DbSet<KitchenAccessory> KitchenAccessories { get; set; }
