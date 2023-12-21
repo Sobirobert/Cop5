@@ -1,6 +1,6 @@
 ﻿using WhatWhere.Services;
 
-namespace WhatWhere;
+namespace WhatWhere1._UI;
 
 public class App : IApp
 {

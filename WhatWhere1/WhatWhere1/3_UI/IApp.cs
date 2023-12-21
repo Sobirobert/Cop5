@@ -1,4 +1,4 @@
-﻿namespace WhatWhere
+﻿namespace WhatWhere1._UI
 {
     internal interface IApp
     {

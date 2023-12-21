@@ -1,7 +1,6 @@
 ﻿namespace WhatWhere.Data;
 
 using Microsoft.EntityFrameworkCore;
-using WhatWhere.Components.CSVReader.Models;
 using WhatWhere.Data.Entities;
 
 public class WhatWhereDbContext : DbContext

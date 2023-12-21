@@ -44,7 +44,7 @@ public class UserCommunication : IUserCommunication
                     }
                     else if (inPut == 2)
                     {
-                        AddNewGroceries(_foodProductRepository);
+                        AddNewFoodProduct(_foodProductRepository);
                         Console.WriteLine("Success");
                     }
                     else if (inPut == 3)
@@ -83,17 +83,17 @@ public class UserCommunication : IUserCommunication
                     var userInPut3 = GetInputFromUserAndReturnInt("\nWhich Entities do you want remove by Id ? \n Press 1 - AGD, 2 - Groceries, 3 - KitchenAccessories.\n");
                     if (userInPut3 == 1)
                     {
-                        RemoveEntity(_agdRepository);
+                        RemoveObjectFromEntitie(_agdRepository);
                         Console.WriteLine($"Success");
                     }
                     else if (userInPut3 == 2)
                     {
-                        RemoveEntity(_foodProductRepository);
+                        RemoveObjectFromEntitie(_foodProductRepository);
                         Console.WriteLine("Success");
                     }
                     else if (userInPut3 == 3)
                     {
-                        RemoveEntity(_kitchenAccessoryRepository);
+                        RemoveObjectFromEntitie(_kitchenAccessoryRepository);
                         Console.WriteLine("Success");
                     }
                     break;
@@ -104,7 +104,6 @@ public class UserCommunication : IUserCommunication
 
                 case "x":
                 case "X":
-                    // CloseAppSaveChanges(_agdRepository, _foodProductRepository, _kitchenAccessoryRepository);
                     return;
 
                 default:
@@ -113,32 +112,8 @@ public class UserCommunication : IUserCommunication
             }
         }
     }
-
-    //private bool CloseAppSaveChanges(IRepository<AGD> agdRepository, IRepository<FoodProduct> foodProductRepository, IRepository<KitchenAccessory> kitchenAccessoryRepository)
-    //{
-    //    while (true)
-    //    {
-    //        var choice = GetInputFromUserAndReturnString("Do you want to save changes?\nPress Y if YES\t\tPress N if NO").ToUpper();
-    //        if (choice == "Y")
-    //        {
-    //            agdRepository.Save();
-    //            foodProductRepository.Save();
-    //            kitchenAccessoryRepository.Save();
-    //            Console.WriteLine("Changes saved.");
-    //            return true;
-    //        }
-    //        else if (choice == "N")
-    //        {
-    //            return true;
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Please choose Yes or No:");
-    //        }
-    //    }
-    //}
-
-    private void RemoveEntity<T>(IRepository<T> repository) where T : class, IEntity
+        
+    private void RemoveObjectFromEntitie<T>(IRepository<T> repository) where T : class, IEntity
     {
         var entityFound = FindProductById(repository);
         if (entityFound != null)
@@ -182,21 +157,17 @@ public class UserCommunication : IUserCommunication
 
     private void AddNewAGD(IRepository<AGD> agdRepositoryToJSON)
     {
-        Console.WriteLine("Insert name");
-        var name = Console.ReadLine();
+        var name = GetInputFromUserAndReturnString("Insert name");
 
-        Console.WriteLine("Insert Location");
-        var location = Console.ReadLine();
+        var location = GetInputFromUserAndReturnString("Insert Location");
 
-        Console.WriteLine("Insert Count");
-        var count = Console.ReadLine();
-        int countInt = AddStringConversionToInt(count);
+        var count = GetInputFromUserAndReturnInt("Insert Count");
 
         agdRepositoryToJSON.Add(new AGD()
         {
             Name = name,
             Location = location,
-            Count = countInt,
+            Count = count,
             DateChange = DateTime.Now
         });
         Console.WriteLine($"AGD Added: {name}");
@@ -204,43 +175,35 @@ public class UserCommunication : IUserCommunication
 
     private void AddNewKitchenAccessories(IRepository<KitchenAccessory> kitchenAccessoryRepositoryToJSON)
     {
-        Console.WriteLine("Insert name");
-        var name = Console.ReadLine();
+        var name = GetInputFromUserAndReturnString("Insert name");
 
-        Console.WriteLine("Insert Location");
-        var location = Console.ReadLine();
+        var location = GetInputFromUserAndReturnString("Insert Location");
 
-        Console.WriteLine("Insert Count");
-        var count = Console.ReadLine();
-        int countInt = AddStringConversionToInt(count);
+        var count = GetInputFromUserAndReturnInt("Insert Count");
 
         kitchenAccessoryRepositoryToJSON.Add(new KitchenAccessory()
         {
             Name = name,
             Location = location,
-            Count = countInt,
+            Count = count,
             DateChange = DateTime.Now
         });
         Console.WriteLine($"KitchenAccessories Added: {name}");
     }
 
-    private void AddNewGroceries(IRepository<FoodProduct> foodProductRepositoryToJSON)
+    private void AddNewFoodProduct(IRepository<FoodProduct> foodProductRepositoryToJSON)
     {
-        Console.WriteLine("Insert name");
-        var name = Console.ReadLine();
+        var name = GetInputFromUserAndReturnString("Insert name");
 
-        Console.WriteLine("Insert Location");
-        var location = Console.ReadLine();
+        var location = GetInputFromUserAndReturnString("Insert Location");
 
-        Console.WriteLine("Insert Count");
-        var count = Console.ReadLine();
-        int countInt = AddStringConversionToInt(count);
+        var count = GetInputFromUserAndReturnInt("Insert Count");
 
         foodProductRepositoryToJSON.Add(new FoodProduct()
         {
             Name = name,
             Location = location,
-            Count = countInt,
+            Count = count,
             DateChange = DateTime.Now
         });
         Console.WriteLine($"Groceries Added: {name}");
