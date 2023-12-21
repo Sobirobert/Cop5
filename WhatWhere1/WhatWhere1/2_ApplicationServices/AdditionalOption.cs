@@ -1,4 +1,4 @@
-﻿using WhatWhere.Components.DataProviders;
+﻿using WhatWhere1.Components.DataProviders;
 
 namespace WhatWhere.Services;
 
@@ -6,9 +6,9 @@ public class AdditionalOption : IAdditionalOption
 {
     private readonly IFoodProductProvider _foodProductProvider;
 
-    public AdditionalOption(IFoodProductProvider entitiesProviderGroceries)
+    public AdditionalOption(IFoodProductProvider foodProductProvider)
     {
-        _foodProductProvider = entitiesProviderGroceries;
+        _foodProductProvider = foodProductProvider;
     }
 
     public void Menu()

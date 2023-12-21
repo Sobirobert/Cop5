@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
-using WhatWhere.Components.CSVReader;
+using WhatWhere1.Components.CsvReader;
 
-namespace WhatWhere.Components.XmlReader;
+namespace WhatWhere1.Components.XmlReader;
 
 public class XmlCreator : IXmlCreator
 {

@@ -1,6 +1,6 @@
 ﻿using WhatWhere.Data.Entities;
 
-namespace WhatWhere.Components.DataProviders;
+namespace WhatWhere1.Components.DataProviders;
 
 public interface IFoodProductProvider
 {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using WhatWhere.Components.CSVReader;
-using WhatWhere.Components.DataProviders;
-using WhatWhere.Components.XmlReader;
 using WhatWhere.Data;
 using WhatWhere.Data.Entities;
 using WhatWhere.Data.Repositories;
 using WhatWhere.Services;
 using WhatWhere1._UI;
+using WhatWhere1.Components.CsvReader;
+using WhatWhere1.Components.DataProviders;
+using WhatWhere1.Components.XmlReader;
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();

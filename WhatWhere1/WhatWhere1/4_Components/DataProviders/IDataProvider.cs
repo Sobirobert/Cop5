@@ -1,4 +1,4 @@
-﻿namespace WhatWhere.Components.DataProviders;
+﻿namespace WhatWhere1.Components.DataProviders;
 
 public interface IDataProvider
 {

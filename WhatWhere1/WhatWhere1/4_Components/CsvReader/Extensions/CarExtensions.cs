@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
-using WhatWhere.Components.CSVReader.Models;
+using WhatWhere1.Components.CsvReader.Models;
 
-namespace WhatWhere.Components.CSVReader.Extensions;
+namespace WhatWhere1.Components.CsvReader.Extensions;
 
 public static class CarExtensions
 {

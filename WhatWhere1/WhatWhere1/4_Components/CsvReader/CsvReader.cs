@@ -1,7 +1,7 @@
-﻿using WhatWhere.Components.CSVReader.Extensions;
-using WhatWhere.Components.CSVReader.Models;
+﻿using WhatWhere1.Components.CsvReader.Extensions;
+using WhatWhere1.Components.CsvReader.Models;
 
-namespace WhatWhere.Components.CSVReader;
+namespace WhatWhere1.Components.CsvReader;
 
 public class CsvReader : ICsvReader
 {

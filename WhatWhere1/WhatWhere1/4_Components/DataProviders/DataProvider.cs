@@ -1,7 +1,7 @@
-﻿using WhatWhere.Components.CSVReader;
-using WhatWhere.Components.CSVReader.Models;
+﻿using WhatWhere1.Components.CsvReader;
+using WhatWhere1.Components.CsvReader.Models;
 
-namespace WhatWhere.Components.DataProviders;
+namespace WhatWhere1.Components.DataProviders;
 
 public class DataProvider : IDataProvider
 {

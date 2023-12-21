@@ -1,4 +1,4 @@
-﻿namespace WhatWhere.Components.CSVReader.Models;
+﻿namespace WhatWhere1.Components.CsvReader.Models;
 
 public class Manufacture
 {

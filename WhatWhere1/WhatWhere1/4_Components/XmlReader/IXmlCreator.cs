@@ -1,4 +1,4 @@
-﻿namespace WhatWhere.Components.XmlReader;
+﻿namespace WhatWhere1.Components.XmlReader;
 
 public interface IXmlCreator
 {

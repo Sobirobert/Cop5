@@ -1,6 +1,6 @@
 ﻿using WhatWhere.Data.Entities;
 
-namespace WhatWhere.Components.CSVReader.Models;
+namespace WhatWhere1.Components.CsvReader.Models;
 
 public class Car : EntityBase
 {

@@ -1,6 +1,6 @@
-﻿using WhatWhere.Components.CSVReader.Models;
+﻿using WhatWhere1.Components.CsvReader.Models;
 
-namespace WhatWhere.Components.CSVReader;
+namespace WhatWhere1.Components.CsvReader;
 
 public interface ICsvReader
 {
